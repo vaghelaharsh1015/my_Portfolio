@@ -44,46 +44,24 @@ export const portfolioData = {
     {
       id: "react-1",
       category: "React",
-      title: "DevHub Developer Community",
-      shortDescription: "A modern glassmorphic developer workspace featuring team collab boards, live markdown editor, and project trackers.",
-      longDescription: "DevHub is a comprehensive dashboard platform tailored for developers to manage their code projects, read developer news, collaborate using interactive kanban boards, and edit documentation using a live-updating markdown editor. Built on React with a glassmorphism style sheet, it provides a high-performance workspace with animations.",
-      technologies: ["React.js", "CSS3", "React Icons", "Local Storage"],
-      image: "react_project_devhub",
-      liveUrl: "https://github.com/vaghelaharsh1015/devhub",
-      githubUrl: "https://github.com/vaghelaharsh1015/devhub"
-    },
-    {
-      id: "react-2",
-      category: "React",
-      title: "Crypto Dashboard & Tracker",
-      shortDescription: "A real-time cryptocurrency statistics portal displaying prices, historical trends, and interactive tracking lists.",
-      longDescription: "A responsive cryptocurrency investment hub utilizing public APIs to render real-time market data. Users can create customizable watchlists, view detailed price trend charts, and simulate portfolio values. The design follows dark theme aesthetics with soft neon gradients.",
-      technologies: ["React.js", "Fetch API", "CSS Variables", "Interactive Canvas"],
-      image: "react_project_crypto",
-      liveUrl: "https://github.com/vaghelaharsh1015/crypto-tracker",
-      githubUrl: "https://github.com/vaghelaharsh1015/crypto-tracker"
+      title: "Pet Shop E-Commerce Website",
+      shortDescription: "A comprehensive pet shop and care platform featuring service bookings, product catalog, shopping cart, and blog details.",
+      longDescription: "Pet Shop is a fully featured, responsive React e-commerce application designed for pet owners and pet care centers. It features a complete online shop with dynamic product details, an interactive shopping cart and checkout simulation, a service booking overview, gallery components, and comprehensive blogs. Built using React and React Router for multi-page navigation and modular components.",
+      technologies: ["React.js", "React Router", "React Icons", "CSS3 Animation"],
+      image: "react_project_petshop",
+      liveUrl: "https://petshop-website-sigma.vercel.app",
+      githubUrl: "https://github.com/vaghelaharsh1015/pet-shop"
     },
     {
       id: "js-1",
       category: "JavaScript",
-      title: "Kanban Task Board",
-      shortDescription: "An interactive, drag-and-drop task board with state transitions, custom tags, and local storage caching.",
-      longDescription: "This interactive Kanban board allows users to manage workflows by creating, dragging, and organizing task cards across different states (Backlog, In Progress, Review, Done). Written in pure vanilla JavaScript, it features custom drag-and-drop event listeners, filterable labels, and data persistence.",
-      technologies: ["JavaScript (ES6)", "HTML5", "CSS Grid", "Local Storage"],
-      image: "js_project_kanban",
-      liveUrl: "https://github.com/vaghelaharsh1015/js-kanban",
-      githubUrl: "https://github.com/vaghelaharsh1015/js-kanban"
-    },
-    {
-      id: "js-2",
-      category: "JavaScript",
-      title: "Retro Brick Breaker Game",
-      shortDescription: "A classic arcade game rendered on HTML5 Canvas featuring physics, dynamic level speeds, and sound effects.",
-      longDescription: "A retro brick breaker game built from scratch using object-oriented JavaScript and the HTML5 Canvas API. It integrates collision detection, score and life systems, powerups (paddle extension, ball speed variations), and smooth frame rendering for a latency-free experience.",
-      technologies: ["JavaScript", "HTML5 Canvas", "CSS3 Animation", "Audio API"],
-      image: "js_project_brickbreaker",
-      liveUrl: "https://github.com/vaghelaharsh1015/brick-breaker",
-      githubUrl: "https://github.com/vaghelaharsh1015/brick-breaker"
+      title: "HK Mart - E-Commerce Website",
+      shortDescription: "An interactive, responsive e-commerce web app featuring a user authentication portal and real-time cart handling.",
+      longDescription: "HK Mart is a frontend e-commerce platform designed with Vanilla JavaScript, Bootstrap 5, and custom styling. It allows users to browse products, add items to a shopping cart with local-storage persistence, update quantities, and login/register through modal forms.",
+      technologies: ["JavaScript", "Bootstrap 5", "CSS3", "Local Storage"],
+      image: "js_project_hkmart",
+      liveUrl: "https://hk-mart-c1uyx579a-king-petshop.vercel.app",
+      githubUrl: "https://github.com/vaghelaharsh1015/HK-MART.git"
     },
     {
       id: "html-1",
