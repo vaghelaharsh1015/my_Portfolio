@@ -51,17 +51,19 @@ export default function App() {
       if (isHoverable) {
         follower.style.width = '48px';
         follower.style.height = '48px';
-        follower.style.borderColor = 'var(--accent-cyan)';
-        follower.style.boxShadow = '0 0 15px rgba(0, 245, 255, 0.3)';
-        dot.style.backgroundColor = 'var(--accent-purple)';
-        dot.style.boxShadow = '0 0 10px rgba(139, 92, 246, 0.8)';
+        follower.style.borderColor = 'var(--accent-primary)';
+        follower.style.boxShadow = '0 0 15px rgba(99, 102, 241, 0.35)';
+        follower.style.backgroundColor = 'rgba(99, 102, 241, 0.05)';
+        dot.style.backgroundColor = 'var(--accent-secondary)';
+        dot.style.boxShadow = '0 0 10px rgba(236, 72, 153, 0.8)';
       } else {
-        follower.style.width = '30px';
-        follower.style.height = '30px';
-        follower.style.borderColor = 'rgba(0, 168, 255, 0.5)';
-        follower.style.boxShadow = '0 0 10px rgba(0, 168, 255, 0.1)';
-        dot.style.backgroundColor = 'var(--accent-cyan)';
-        dot.style.boxShadow = 'var(--shadow-glow-cyan)';
+        follower.style.width = '32px';
+        follower.style.height = '32px';
+        follower.style.borderColor = 'rgba(99, 102, 241, 0.3)';
+        follower.style.boxShadow = 'none';
+        follower.style.backgroundColor = 'transparent';
+        dot.style.backgroundColor = 'var(--text-primary)';
+        dot.style.boxShadow = 'none';
       }
     };
 

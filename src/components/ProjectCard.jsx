@@ -40,23 +40,23 @@ export default function ProjectCard({ project, onCardClick }) {
     switch (category) {
       case 'React':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #0B1E36 0%, #03060C 100%)' }}>
-            <span className="project-graphic-icon animate-spin-slow" style={{ color: '#00f5ff' }}>⚛</span>
-            <span className="project-graphic-tag">REACT COMPONENT</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1e1b4b 0%, #030712 100%)' }}>
+            <span className="project-graphic-icon animate-spin-slow" style={{ color: '#6366f1' }}>⚛</span>
+            <span className="project-graphic-tag">React Component</span>
           </div>
         );
       case 'JavaScript':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #2B210B 0%, #070501 100%)' }}>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #311c08 0%, #030712 100%)' }}>
             <span className="project-graphic-icon" style={{ color: '#f59e0b' }}>JS</span>
-            <span className="project-graphic-tag">ES6 MODULE</span>
+            <span className="project-graphic-tag">JavaScript Module</span>
           </div>
         );
       default: // HTML & CSS
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1B132C 0%, #050308 100%)' }}>
-            <span className="project-graphic-icon" style={{ color: '#8b5cf6' }}>&lt;/&gt;</span>
-            <span className="project-graphic-tag">STYLESHEET / HTML</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #2e1065 0%, #030712 100%)' }}>
+            <span className="project-graphic-icon" style={{ color: '#ec4899' }}>&lt;/&gt;</span>
+            <span className="project-graphic-tag">HTML & CSS Styles</span>
           </div>
         );
     }

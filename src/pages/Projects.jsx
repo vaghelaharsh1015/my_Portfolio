@@ -48,23 +48,23 @@ export default function Projects() {
     switch (category) {
       case 'React':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #0B1E36 0%, #03060C 100%)', height: '100%' }}>
-            <span className="project-graphic-icon animate-spin-slow" style={{ fontSize: '5rem', color: '#00f5ff' }}>⚛</span>
-            <span className="project-graphic-tag">REACT SYSTEM INSTANTIATED</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1e1b4b 0%, #030712 100%)', height: '100%' }}>
+            <span className="project-graphic-icon animate-spin-slow" style={{ fontSize: '5rem', color: '#6366f1' }}>⚛</span>
+            <span className="project-graphic-tag">React Component</span>
           </div>
         );
       case 'JavaScript':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #2B210B 0%, #070501 100%)', height: '100%' }}>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #311c08 0%, #030712 100%)', height: '100%' }}>
             <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#f59e0b' }}>JS</span>
-            <span className="project-graphic-tag">JAVASCRIPT RUNTIME EXECUTION</span>
+            <span className="project-graphic-tag">JavaScript Module</span>
           </div>
         );
       default:
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1B132C 0%, #050308 100%)', height: '100%' }}>
-            <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#8b5cf6' }}>&lt;/&gt;</span>
-            <span className="project-graphic-tag">MARKUP & STYLES STRUCT</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #2e1065 0%, #030712 100%)', height: '100%' }}>
+            <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#ec4899' }}>&lt;/&gt;</span>
+            <span className="project-graphic-tag">HTML & CSS Styles</span>
           </div>
         );
     }

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { portfolioData } from '../data/portfolioData';
 import ScrollReveal from '../components/ScrollReveal';
+import avatarImg from '../assets/avatar.png';
 import '../styles/about.css';
 
 // Subcomponent: Animated Counter
@@ -124,11 +125,9 @@ export default function About() {
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
               >
-                {/* Visual Avatar frame with HUD overlays */}
+                {/* Profile Avatar Image */}
                 <div className="profile-img-container">
-                  <div className="hud-scan-line" />
-                  <div className="hud-grid-overlay" />
-                  <div className="profile-avatar-mock">👨‍💻</div>
+                  <img src={avatarImg} alt="Harsh Vaghela" className="profile-avatar-img" />
                 </div>
 
                 {/* ID Info */}

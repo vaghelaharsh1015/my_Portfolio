@@ -148,17 +148,17 @@ Generated dynamically from Portfolio.
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="modal-header-image" style={{ height: '70px', background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(0, 245, 255, 0.15)' }}>
+            <div className="modal-header-image" style={{ height: '70px', background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
               <button className="modal-close-btn" style={{ top: '15px', right: '15px' }} onClick={() => setShowViewModal(false)}>
                 <FaTimes size={16} />
               </button>
-              <div style={{ padding: '20px', fontFamily: 'var(--font-heading)', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+              <div style={{ padding: '20px', fontFamily: 'var(--font-heading)', color: 'var(--accent-primary)', fontWeight: 600 }}>
                 📄 HARSH_VAGHELA_RESUME.TXT
               </div>
             </div>
 
             {/* Modal Body containing plain-text layout */}
-            <div className="modal-body" style={{ padding: '25px', overflowY: 'auto', background: '#05070c' }}>
+            <div className="modal-body" style={{ padding: '25px', overflowY: 'auto', background: 'var(--bg-primary)' }}>
               <pre style={{ 
                 fontFamily: 'monospace', 
                 color: 'var(--text-secondary)', 

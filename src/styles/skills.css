@@ -1,42 +1,47 @@
-/* Skills section stylesheet */
+/* Skills Section Styles */
 .skills-groups-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 30px;
 }
 
 .skills-group-block {
-  background: rgba(10, 15, 31, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.skills-group-block:hover {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .skills-group-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 25px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .skills-group-title::after {
   content: '';
   flex-grow: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(0, 245, 255, 0.25), transparent);
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), transparent);
 }
 
 .skills-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* 3D Glassmorphic Skill Card */
+/* Glassmorphic Skill Card */
 .skill-card {
   display: flex;
   justify-content: space-between;
@@ -44,20 +49,16 @@
   padding: 16px 24px;
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   cursor: pointer;
-  perspective: 1000px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.4s ease, 
-              background-color 0.4s ease,
-              box-shadow 0.4s ease;
+  transition: var(--transition-smooth);
 }
 
 .skill-card:hover {
-  transform: translateY(-5px) rotateX(4deg) rotateY(-2deg);
-  border-color: rgba(0, 245, 255, 0.25);
-  background: rgba(0, 245, 255, 0.02);
-  box-shadow: 0 10px 20px rgba(0, 245, 255, 0.04);
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.02);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.05);
 }
 
 .skill-info {
@@ -67,14 +68,14 @@
 }
 
 .skill-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--text-secondary);
   transition: var(--transition-fast);
 }
 
 .skill-card:hover .skill-icon {
-  color: var(--accent-cyan);
-  filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.6));
+  color: var(--accent-primary);
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3));
 }
 
 .skill-name {
@@ -111,7 +112,7 @@
 }
 
 .skill-card:hover .skill-ring-progress {
-  filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.4));
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
 }
 
 .skill-ring-text {
@@ -120,14 +121,14 @@
   font-weight: 600;
   color: var(--text-secondary);
   font-family: var(--font-heading);
+  transition: var(--transition-fast);
 }
 
 .skill-card:hover .skill-ring-text {
   color: var(--text-primary);
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
-/* Gradient Stroke definitions container hidden */
+/* Hidden definitions container */
 .svg-gradient-def {
   position: absolute;
   width: 0;
@@ -141,6 +142,7 @@
     gap: 30px;
   }
 }
+
 @media (max-width: 480px) {
   .skills-group-block {
     padding: 20px;

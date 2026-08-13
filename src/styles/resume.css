@@ -1,9 +1,9 @@
-/* Resume section stylesheet */
+/* Resume Section Styles */
 .resume-section {
-  padding: 100px 0;
+  padding: 120px 0;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at 80% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 65%);
 }
 
 .resume-grid {
@@ -21,16 +21,21 @@
 }
 
 .resume-heading {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-family: var(--font-heading);
-  line-height: 1.2;
+  line-height: 1.15;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .resume-desc {
   font-size: 1.1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  max-width: 520px;
+  line-height: 1.7;
+  max-width: 540px;
   margin-bottom: 15px;
 }
 
@@ -40,7 +45,7 @@
   flex-wrap: wrap;
 }
 
-/* 3D Floating Document Animation */
+/* 3D Floating Mock Document */
 .resume-3d-col {
   display: flex;
   justify-content: center;
@@ -50,14 +55,13 @@
   position: relative;
 }
 
-/* Base card containing document meshes */
 .resume-doc-card {
   width: 230px;
   height: 310px;
-  background: rgba(10, 15, 31, 0.6);
-  border: 1px solid rgba(0, 245, 255, 0.15);
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 245, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--glass-shadow);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -65,27 +69,33 @@
   position: relative;
   transform: rotateY(-20deg) rotateX(20deg) rotateZ(-10deg);
   transform-style: preserve-3d;
-  animation: doc-float 5s infinite ease-in-out;
+  animation: doc-float 6s infinite ease-in-out;
   cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
 .resume-doc-card::after {
   content: '';
   position: absolute;
   inset: -1px;
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   padding: 1px;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.25;
+  transition: var(--transition-smooth);
 }
 
 .resume-doc-card:hover {
-  border-color: rgba(0, 245, 255, 0.4);
-  box-shadow: 0 25px 50px rgba(0, 245, 255, 0.15);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 25px 50px rgba(99, 102, 241, 0.12);
+}
+
+.resume-doc-card:hover::after {
+  opacity: 0.6;
 }
 
 @keyframes doc-float {
@@ -93,16 +103,16 @@
     transform: rotateY(-20deg) rotateX(20deg) rotateZ(-10deg) translateY(0);
   }
   50% {
-    transform: rotateY(-15deg) rotateX(15deg) rotateZ(-8deg) translateY(-15px);
+    transform: rotateY(-16deg) rotateX(16deg) rotateZ(-8deg) translateY(-12px);
   }
 }
 
-/* Micro Mock elements inside the document */
+/* Micro Mock contents inside the card */
 .doc-mock-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding-bottom: 12px;
 }
 
@@ -114,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--bg-primary);
+  color: #ffffff;
   font-weight: 700;
   font-size: 0.85rem;
   font-family: var(--font-heading);
@@ -130,13 +140,13 @@
 .doc-mock-line {
   height: 6px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .doc-mock-line.short { width: 50%; }
 .doc-mock-line.medium { width: 80%; }
-.doc-mock-line.cyan { background: var(--accent-cyan); width: 65%; }
-.doc-mock-line.purple { background: var(--accent-purple); width: 40%; }
+.doc-mock-line.cyan { background: var(--accent-primary); width: 65%; }
+.doc-mock-line.purple { background: var(--accent-secondary); width: 40%; }
 
 .doc-mock-body {
   display: flex;
@@ -153,7 +163,7 @@
 .doc-mock-section-title {
   height: 8px;
   width: 35%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
   margin-bottom: 4px;
 }
