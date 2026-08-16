@@ -111,7 +111,7 @@ export default function ThreeCanvas() {
     // Laptop Screen Border Glow
     const borderGeo = new THREE.BoxGeometry(2.65, 1.85, 0.08);
     const borderMat = new THREE.MeshBasicMaterial({
-      color: 0x00f5ff,
+      color: 0x6366f1,
       wireframe: true,
       transparent: true,
       opacity: 0.35
@@ -152,8 +152,8 @@ export default function ThreeCanvas() {
     // Center Core Sphere
     const coreGeo = new THREE.SphereGeometry(0.3, 32, 32);
     const coreMat = new THREE.MeshStandardMaterial({
-      color: 0x00f5ff,
-      emissive: 0x00f5ff,
+      color: 0x6366f1,
+      emissive: 0x6366f1,
       emissiveIntensity: 0.8,
       roughness: 0.1
     });
@@ -162,7 +162,7 @@ export default function ThreeCanvas() {
 
     // React Rings (3 scaled toruses)
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0x00a8ff,
+      color: 0xa855f7,
       transparent: true,
       opacity: 0.7,
       wireframe: true
@@ -210,7 +210,7 @@ export default function ThreeCanvas() {
     // Small Gold Floating Cube
     const cubeGeo = new THREE.BoxGeometry(0.4, 0.4, 0.4);
     const cubeMat = new THREE.MeshStandardMaterial({
-      color: 0x00f5ff,
+      color: 0x6366f1,
       roughness: 0.3,
       metalness: 0.8
     });
@@ -251,7 +251,7 @@ export default function ThreeCanvas() {
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
-      color: 0x00f5ff
+      color: 0x6366f1
     });
 
     const starParticles = new THREE.Points(starGeo, starMat);

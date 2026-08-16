@@ -48,22 +48,22 @@ export default function Projects() {
     switch (category) {
       case 'React':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1e1b4b 0%, #030712 100%)', height: '100%' }}>
-            <span className="project-graphic-icon animate-spin-slow" style={{ fontSize: '5rem', color: '#6366f1' }}>⚛</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #0e2a35 0%, #071A1A 100%)', height: '100%' }}>
+            <span className="project-graphic-icon animate-spin-slow" style={{ fontSize: '5rem', color: '#22D3EE' }}>⚛</span>
             <span className="project-graphic-tag">React Component</span>
           </div>
         );
       case 'JavaScript':
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #311c08 0%, #030712 100%)', height: '100%' }}>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #311c08 0%, #071A1A 100%)', height: '100%' }}>
             <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#f59e0b' }}>JS</span>
             <span className="project-graphic-tag">JavaScript Module</span>
           </div>
         );
       default:
         return (
-          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #2e1065 0%, #030712 100%)', height: '100%' }}>
-            <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#ec4899' }}>&lt;/&gt;</span>
+          <div className="project-visual-placeholder" style={{ background: 'radial-gradient(circle at center, #1e0f35 0%, #071A1A 100%)', height: '100%' }}>
+            <span className="project-graphic-icon" style={{ fontSize: '5rem', color: '#8B5CF6' }}>&lt;/&gt;</span>
             <span className="project-graphic-tag">HTML & CSS Styles</span>
           </div>
         );
