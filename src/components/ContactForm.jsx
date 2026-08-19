@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaWhatsapp } from 'react-icons/fa';
 import '../styles/contact.css';
 
 export default function ContactForm() {
@@ -18,10 +18,10 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Simple Client-side validation
+    // Client-side validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
       setStatus('error');
       setErrorMessage('Please fill in all fields.');
@@ -36,22 +36,65 @@ export default function ContactForm() {
     }
 
     setStatus('loading');
+    setErrorMessage('');
 
-    // Simulate API request submission
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+    try {
+      // Web3Forms API endpoint - Sends real-time email directly to harshvaghela4277@gmail.com
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '697fe33f-e84c-4ead-a1d3-2b99e85fd267';
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', accessKey);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('subject', formData.subject || 'Portfolio Inquiry');
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('from_name', `${formData.name} (Portfolio)`);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
       });
-    }, 1500);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setStatus('error');
+        setErrorMessage(data.message || 'Submission failed. Please try again.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setStatus('error');
+      setErrorMessage('Network error. Please try again or reach out on WhatsApp.');
+    }
+  };
+
+  const handleWhatsAppSend = () => {
+    if (!formData.name.trim() && !formData.message.trim()) {
+      const defaultText = encodeURIComponent("Hi Harsh, I saw your portfolio and would like to connect with you!");
+      window.open(`https://wa.me/916355704701?text=${defaultText}`, '_blank');
+      return;
+    }
+
+    const text = encodeURIComponent(
+      `Hi Harsh!\n*Name:* ${formData.name || 'Visitor'}\n*Email:* ${formData.email || 'N/A'}\n*Subject:* ${formData.subject || 'Portfolio Inquiry'}\n*Message:* ${formData.message || 'I would like to get in touch!'}`
+    );
+    window.open(`https://wa.me/916355704701?text=${text}`, '_blank');
   };
 
   return (
     <div className="contact-form-card">
-      <h3 className="form-title">Send a Message</h3>
+      <div className="form-card-header">
+        <h3 className="form-title">Send a Message</h3>
+        <p className="form-subtitle">Messages are sent directly to Harsh's inbox in real-time.</p>
+      </div>
       
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="form-row">
@@ -63,7 +106,7 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="John Doe"
+              placeholder="Your Name"
               disabled={status === 'loading'}
               required
             />
@@ -77,7 +120,7 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="john@example.com"
+              placeholder="your.email@example.com"
               disabled={status === 'loading'}
               required
             />
@@ -92,7 +135,7 @@ export default function ContactForm() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="Project Collaboration"
+            placeholder="Project Inquiry / Job Opportunity"
             disabled={status === 'loading'}
             required
           />
@@ -105,38 +148,50 @@ export default function ContactForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Tell me about your project idea..."
+            placeholder="Write your message here..."
             disabled={status === 'loading'}
             required
           />
         </div>
 
-        <button 
-          type="submit" 
-          className="form-submit-btn"
-          disabled={status === 'loading'}
-        >
-          {status === 'loading' ? (
-            <span>Sending...</span>
-          ) : (
-            <>
-              Send Message <FaPaperPlane size={14} />
-            </>
-          )}
-        </button>
+        <div className="form-actions-group">
+          <button 
+            type="submit" 
+            className="form-submit-btn"
+            disabled={status === 'loading'}
+          >
+            {status === 'loading' ? (
+              <span>Sending Email...</span>
+            ) : (
+              <>
+                Send Email <FaPaperPlane size={14} />
+              </>
+            )}
+          </button>
+
+          <button 
+            type="button" 
+            onClick={handleWhatsAppSend}
+            className="form-whatsapp-btn"
+            title="Chat instantly on WhatsApp"
+          >
+            <FaWhatsapp size={18} /> Chat on WhatsApp
+          </button>
+        </div>
 
         {status === 'success' && (
           <div className="form-status success">
-            🎉 Message sent successfully! I will get back to you soon.
+            🎉 <strong>Message Sent!</strong> Thank you for reaching out. Harsh will respond to your email/phone shortly!
           </div>
         )}
 
         {status === 'error' && (
           <div className="form-status error">
-            ⚠️ {errorMessage || 'An error occurred. Please try again.'}
+            ⚠️ {errorMessage || 'An error occurred. Please try again or reach out on WhatsApp.'}
           </div>
         )}
       </form>
     </div>
   );
 }
+

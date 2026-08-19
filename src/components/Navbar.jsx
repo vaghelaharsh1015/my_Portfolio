@@ -74,7 +74,7 @@ export default function Navbar() {
       <div className="nav-container">
         {/* Logo */}
         <div className="nav-logo" onClick={() => handleLinkClick('home')}>
-          <span className="gradient-text">Harsh</span>Vaghela<span>.dev</span>
+          <span className="logo-name">harsh</span><span className="logo-dot-dev">.dev</span>
         </div>
 
         {/* Desktop Links */}

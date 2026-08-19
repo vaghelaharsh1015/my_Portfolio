@@ -141,9 +141,9 @@ export default function ThreeCanvas() {
     keyboard.rotation.x = 0.08;
     laptopGroup.add(keyboard);
 
-    // Position laptop group in screen
-    laptopGroup.position.set(-1.2, 0.4, 0);
-    laptopGroup.rotation.y = 0.35; // Tilted slightly to face right
+    // Position laptop group in background
+    laptopGroup.position.set(isMobile ? 0 : 2.2, isMobile ? -0.8 : 0.3, 0);
+    laptopGroup.rotation.y = isMobile ? 0 : -0.3; // Tilted towards center
 
     // --- 3. FLOATING REACT LOGO ---
     const reactGroup = new THREE.Group();
@@ -190,8 +190,8 @@ export default function ThreeCanvas() {
 
     reactGroup.add(ringGroup);
 
-    // React position
-    reactGroup.position.set(1.4, -0.6, 0.5);
+    // React position in background
+    reactGroup.position.set(isMobile ? -1.2 : 3.8, isMobile ? 1.5 : -1.2, 0.5);
     reactGroup.scale.set(0.9, 0.9, 0.9);
 
     // --- 4. FLOATING GEOMETRIC SHAPES ---
@@ -204,7 +204,7 @@ export default function ThreeCanvas() {
       opacity: 0.5
     });
     const torusKnot = new THREE.Mesh(knotGeo, knotMat);
-    torusKnot.position.set(1.8, 1.8, -1);
+    torusKnot.position.set(isMobile ? 1.4 : 3.6, isMobile ? 2.0 : 2.0, -1);
     mainGroup.add(torusKnot);
 
     // Small Gold Floating Cube
@@ -215,7 +215,7 @@ export default function ThreeCanvas() {
       metalness: 0.8
     });
     const floatingCube = new THREE.Mesh(cubeGeo, cubeMat);
-    floatingCube.position.set(-1.8, -1.8, -0.5);
+    floatingCube.position.set(isMobile ? -1.5 : -2.8, isMobile ? -2.0 : 1.8, -0.5);
     mainGroup.add(floatingCube);
 
     // --- 5. PARTICLE SYSTEM (STARS / GLOWING DUST) ---

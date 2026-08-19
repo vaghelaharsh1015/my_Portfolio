@@ -7,8 +7,10 @@ import {
   FaCode, 
   FaDatabase, 
   FaGitAlt, 
-  FaGithub 
+  FaGithub,
+  FaPython
 } from 'react-icons/fa';
+import { SiMongodb } from 'react-icons/si';
 import { portfolioData } from '../data/portfolioData';
 import ScrollReveal from '../components/ScrollReveal';
 import '../styles/skills.css';
@@ -105,9 +107,12 @@ export default function Skills() {
         return <FaGitAlt className="skill-icon" />;
       case 'github':
         return <FaGithub className="skill-icon" />;
+      case 'python':
+        return <FaPython className="skill-icon" />;
       case 'sql':
-      case 'pl/sql':
         return <FaDatabase className="skill-icon" />;
+      case 'mongodb':
+        return <SiMongodb className="skill-icon" />;
       default:
         return <FaCode className="skill-icon" />;
     }

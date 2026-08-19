@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
 import { portfolioData } from '../data/portfolioData';
 import ContactForm from '../components/ContactForm';
 import ScrollReveal from '../components/ScrollReveal';
@@ -38,20 +38,34 @@ export default function Contact() {
 
             <ScrollReveal animation="fade-up" delay={250} duration={800} className="contact-details-list">
               {/* Email Card */}
-              <div className="contact-detail-card">
+              <a href={`mailto:${personal.email}`} className="contact-detail-card contact-link-card" target="_blank" rel="noopener noreferrer">
                 <div className="contact-detail-icon">
                   <FaEnvelope />
                 </div>
                 <div className="contact-detail-text">
                   <h4>Email Address</h4>
-                  <a href={`mailto:${personal.email}`}>
-                    {personal.email}
-                  </a>
+                  <p>{personal.email}</p>
                 </div>
-              </div>
+              </a>
+
+              {/* WhatsApp Card */}
+              <a 
+                href={`https://wa.me/916355704701?text=${encodeURIComponent("Hi Harsh, I saw your portfolio and would like to connect with you!")}`} 
+                className="contact-detail-card contact-link-card whatsapp-card"
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <div className="contact-detail-icon whatsapp-icon">
+                  <FaWhatsapp />
+                </div>
+                <div className="contact-detail-text">
+                  <h4>WhatsApp (Instant Reply)</h4>
+                  <p>+91 6355704701</p>
+                </div>
+              </a>
 
               {/* Phone Card */}
-              <div className="contact-detail-card">
+              <a href={`tel:${personal.phone.replace(/\s+/g, '')}`} className="contact-detail-card contact-link-card">
                 <div className="contact-detail-icon">
                   <FaPhone />
                 </div>
@@ -59,7 +73,7 @@ export default function Contact() {
                   <h4>Phone Call</h4>
                   <p>{personal.phone}</p>
                 </div>
-              </div>
+              </a>
 
               {/* Location Card */}
               <div className="contact-detail-card">

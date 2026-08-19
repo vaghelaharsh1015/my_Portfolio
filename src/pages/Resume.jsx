@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { FaFileDownload, FaEye, FaTimes } from 'react-icons/fa';
 import { portfolioData } from '../data/portfolioData';
+import { educationData } from '../data/education';
+import { skillsData } from '../data/skills';
+import { projectsData } from '../data/projects';
 import ScrollReveal from '../components/ScrollReveal';
 import '../styles/resume.css';
 
@@ -8,10 +11,22 @@ export default function Resume() {
   const { personal } = portfolioData;
   const [showViewModal, setShowViewModal] = useState(false);
 
-  // Dynamic Resume generator & downloader
-  const handleDownload = () => {
-    const textContent = `
-=========================================
+  // Build dynamic resume string from actual data files
+  const generateResumeText = () => {
+    const eduText = educationData.map((e, idx) => 
+      `${idx + 1}. ${e.degree} (${e.year})\n   Institution: ${e.institution} (${e.university})\n   ${e.description}`
+    ).join('\n\n');
+
+    const frontendSkills = skillsData.frontend.map(s => s.name).join(', ');
+    const progSkills = skillsData.programming.map(s => s.name).join(', ');
+    const dbSkills = skillsData.database.map(s => s.name).join(', ');
+    const toolSkills = skillsData.tools.map(s => s.name).join(', ');
+
+    const projText = projectsData.map(p => 
+      `- ${p.title} (${p.category}): ${p.shortDescription}`
+    ).join('\n');
+
+    return `=========================================
           HARSH VAGHELA - RESUME         
 =========================================
 BCA Student & Frontend Developer
@@ -25,41 +40,34 @@ LinkedIn: ${personal.linkedinUrl}
 PROFESSIONAL SUMMARY
 -----------------------------------------
 I build modern, responsive, and interactive web experiences
-using modern frontend technologies. Passionate about 3D Web,
-clean UI/UX, and performance optimization.
+using modern frontend technologies. Passionate about clean UI/UX,
+web application development, and software engineering.
 
 -----------------------------------------
 EDUCATION
 -----------------------------------------
-1. Bachelor of Computer Applications (BCA) (2024 - Present)
-   V.S. Patel College of Arts & Science
-   Veer Narmad South Gujarat University (VNSGU)
-   Relevant Subjects: C & C++ Programming, DBMS, Web Dev
-
-2. Higher Secondary Certificate (HSC) - Science (2022 - 2024)
-   Shree Vasishtha Vidyalaya, GSEB Board
-   Relevant Subjects: Physics, Chemistry, Math, Computer Science
+${eduText}
 
 -----------------------------------------
 TECHNICAL SKILLS
 -----------------------------------------
-- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js
-- Languages: C, C++, JavaScript
-- Database: SQL, PL/SQL
-- Tools: Git, GitHub, VS Code
+- Frontend: ${frontendSkills}
+- Languages: ${progSkills}
+- Database: ${dbSkills}
+- Tools & Utilities: ${toolSkills}
 
 -----------------------------------------
 PROJECTS HIGHLIGHTS
 -----------------------------------------
-- DevHub Developer Community (React.js, CSS3, Storage)
-- Crypto Dashboard & Tracker (React.js, Fetch API, Canvas)
-- Kanban Task Board (JavaScript, CSS Grid, Storage)
-- Retro Brick Breaker Game (JavaScript, Canvas API)
+${projText}
 
 =========================================
 Generated dynamically from Portfolio.
-=========================================
-`;
+=========================================`;
+  };
+
+  const handleDownload = () => {
+    const textContent = generateResumeText();
     const blob = new Blob([textContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -144,79 +152,109 @@ Generated dynamically from Portfolio.
         <div className="modal-overlay" onClick={() => setShowViewModal(false)}>
           <div 
             className="modal-content-card" 
-            style={{ maxWidth: '600px', maxHeight: '80vh' }}
+            style={{ maxWidth: '750px', maxHeight: '85vh', background: '#F7F3ED', color: '#241A16' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="modal-header-image" style={{ height: '70px', background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-              <button className="modal-close-btn" style={{ top: '15px', right: '15px' }} onClick={() => setShowViewModal(false)}>
-                <FaTimes size={16} />
-              </button>
-              <div style={{ padding: '20px', fontFamily: 'var(--font-heading)', color: 'var(--accent-primary)', fontWeight: 600 }}>
-                📄 HARSH_VAGHELA_RESUME.TXT
+            <div style={{ padding: '20px 25px', background: '#EFE9E1', borderBottom: '1px solid rgba(111, 78, 55, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#111111', fontFamily: 'var(--font-heading)' }}>
+                  📄 Harsh Vaghela — Resume Preview
+                </h3>
+                <span style={{ fontSize: '0.85rem', color: '#6F4E37' }}>{personal.email} | {personal.phone}</span>
               </div>
+              <button 
+                onClick={() => setShowViewModal(false)}
+                style={{ background: 'none', border: 'none', fontSize: '1.2rem', cursor: 'pointer', color: '#111111', padding: '5px' }}
+                aria-label="Close modal"
+              >
+                <FaTimes />
+              </button>
             </div>
 
-            {/* Modal Body containing plain-text layout */}
-            <div className="modal-body" style={{ padding: '25px', overflowY: 'auto', background: 'var(--bg-primary)' }}>
-              <pre style={{ 
-                fontFamily: 'monospace', 
-                color: 'var(--text-secondary)', 
-                whiteSpace: 'pre-wrap', 
-                fontSize: '0.9rem',
-                lineHeight: '1.45' 
-              }}>
-                {`=========================================
-          HARSH VAGHELA - RESUME         
-=========================================
-BCA Student & Frontend Developer
-Email: ${personal.email}
-Phone: ${personal.phone}
-Location: ${personal.location}
-GitHub: ${personal.githubUrl}
-LinkedIn: ${personal.linkedinUrl}
+            {/* Modal Body: Rich Formatted Resume */}
+            <div style={{ padding: '25px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              {/* Header Info */}
+              <div style={{ background: '#FFFFFF', padding: '18px', borderRadius: '8px', border: '1px solid rgba(111, 78, 55, 0.15)' }}>
+                <h2 style={{ margin: '0 0 5px 0', fontSize: '1.5rem', color: '#111111', fontFamily: 'var(--font-heading)' }}>{personal.name}</h2>
+                <p style={{ margin: '0 0 10px 0', color: '#C8965A', fontWeight: 600 }}>{personal.title}</p>
+                <div style={{ fontSize: '0.9rem', color: '#3A2A1A', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                  <span>📍 {personal.location}</span>
+                  <span>📧 {personal.email}</span>
+                  <span>🔗 <a href={personal.githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#6F4E37' }}>GitHub</a></span>
+                </div>
+              </div>
 
------------------------------------------
-PROFESSIONAL SUMMARY
------------------------------------------
-I build modern, responsive, and interactive web experiences
-using modern frontend technologies. Passionate about 3D Web,
-clean UI/UX, and performance optimization.
+              {/* Education Section */}
+              <div>
+                <h4 style={{ margin: '0 0 10px 0', fontSize: '1.1rem', color: '#111111', borderBottom: '2px solid #C8965A', paddingBottom: '4px', fontFamily: 'var(--font-heading)' }}>
+                  🎓 Education
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {educationData.map((item, idx) => (
+                    <div key={idx} style={{ background: '#FFFFFF', padding: '14px', borderRadius: '8px', border: '1px solid rgba(111, 78, 55, 0.1)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '5px' }}>
+                        <strong style={{ color: '#111111', fontSize: '1rem' }}>{item.degree}</strong>
+                        <span style={{ color: '#C8965A', fontWeight: 600, fontSize: '0.85rem' }}>{item.year}</span>
+                      </div>
+                      <div style={{ fontSize: '0.9rem', color: '#6F4E37', margin: '3px 0' }}>{item.institution} ({item.university})</div>
+                      <p style={{ margin: '6px 0 0 0', fontSize: '0.85rem', color: '#4A3B32', lineHeight: '1.4' }}>{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
------------------------------------------
-EDUCATION
------------------------------------------
-1. Bachelor of Computer Applications (BCA) (2024 - Present)
-   V.S. Patel College of Arts & Science
-   Veer Narmad South Gujarat University (VNSGU)
-   Relevant Subjects: C & C++ Programming, DBMS, Web Dev
+              {/* Technical Skills Section */}
+              <div>
+                <h4 style={{ margin: '0 0 10px 0', fontSize: '1.1rem', color: '#111111', borderBottom: '2px solid #C8965A', paddingBottom: '4px', fontFamily: 'var(--font-heading)' }}>
+                  💻 Technical Skills
+                </h4>
+                <div style={{ background: '#FFFFFF', padding: '14px', borderRadius: '8px', border: '1px solid rgba(111, 78, 55, 0.1)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <div>
+                    <strong style={{ color: '#111111', fontSize: '0.9rem' }}>Frontend: </strong>
+                    <span style={{ color: '#4A3B32', fontSize: '0.9rem' }}>{skillsData.frontend.map(s => `${s.name} (${s.level}%)`).join(', ')}</span>
+                  </div>
+                  <div>
+                    <strong style={{ color: '#111111', fontSize: '0.9rem' }}>Programming: </strong>
+                    <span style={{ color: '#4A3B32', fontSize: '0.9rem' }}>{skillsData.programming.map(s => `${s.name} (${s.level}%)`).join(', ')}</span>
+                  </div>
+                  <div>
+                    <strong style={{ color: '#111111', fontSize: '0.9rem' }}>Database: </strong>
+                    <span style={{ color: '#4A3B32', fontSize: '0.9rem' }}>{skillsData.database.map(s => `${s.name} (${s.level}%)`).join(', ')}</span>
+                  </div>
+                  <div>
+                    <strong style={{ color: '#111111', fontSize: '0.9rem' }}>Tools: </strong>
+                    <span style={{ color: '#4A3B32', fontSize: '0.9rem' }}>{skillsData.tools.map(s => `${s.name} (${s.level}%)`).join(', ')}</span>
+                  </div>
+                </div>
+              </div>
 
-2. Higher Secondary Certificate (HSC) - Science (2022 - 2024)
-   Shree Vasishtha Vidyalaya, GSEB Board
-   Relevant Subjects: Physics, Chemistry, Math, Computer Science
+              {/* Projects Section */}
+              <div>
+                <h4 style={{ margin: '0 0 10px 0', fontSize: '1.1rem', color: '#111111', borderBottom: '2px solid #C8965A', paddingBottom: '4px', fontFamily: 'var(--font-heading)' }}>
+                  🚀 Projects
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {projectsData.map((proj, idx) => (
+                    <div key={idx} style={{ background: '#FFFFFF', padding: '12px 14px', borderRadius: '8px', border: '1px solid rgba(111, 78, 55, 0.1)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <strong style={{ color: '#111111', fontSize: '0.95rem' }}>{proj.title}</strong>
+                        <span style={{ background: '#C8965A', color: '#FFFFFF', padding: '2px 8px', borderRadius: '12px', fontSize: '0.75rem', textTransform: 'uppercase' }}>{proj.category}</span>
+                      </div>
+                      <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: '#4A3B32' }}>{proj.shortDescription}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
------------------------------------------
-TECHNICAL SKILLS
------------------------------------------
-- Frontend: HTML5, CSS3, JavaScript (ES6+), React.js
-- Languages: C, C++, JavaScript
-- Database: SQL, PL/SQL
-- Tools: Git, GitHub, VS Code
-
------------------------------------------
-PROJECTS HIGHLIGHTS
------------------------------------------
-- DevHub Developer Community (React.js, CSS3, Storage)
-- Crypto Dashboard & Tracker (React.js, Fetch API, Canvas)
-- Kanban Task Board (JavaScript, CSS Grid, Storage)
-- Retro Brick Breaker Game (JavaScript, Canvas API)`}
-              </pre>
-
-              <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
-                <button onClick={handleDownload} className="btn-primary" style={{ width: '100%' }}>
+              {/* Download Action */}
+              <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+                <button onClick={handleDownload} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                   Download Text Copy <FaFileDownload />
                 </button>
               </div>
+
             </div>
 
           </div>

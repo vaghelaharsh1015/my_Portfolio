@@ -165,9 +165,10 @@
 
 .stat-number {
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-heading);
   margin-bottom: 4px;
+  color: #3E2A21; /* Dark Coffee */
 }
 
 .stat-label {

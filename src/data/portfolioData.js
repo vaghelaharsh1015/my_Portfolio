@@ -7,16 +7,16 @@ export const portfolioData = {
     resumeUrl: "#resume-section",
     githubUrl: "https://github.com/vaghelaharsh1015",
     linkedinUrl: "https://linkedin.com/in/harsh-vaghela",
-    email: "harshvaghela1015@gmail.com",
-    phone: "+91 98765 43210",
-    location: "Gujarat, India",
+    email: "harshvaghela4277@gmail.com",
+    phone: "+91 6355704701",
+    location: "surat, Gujarat, India",
     tagline: "Building the future of the web with clean code and interactive 3D designs."
   },
   stats: [
-    { value: "10+", label: "Projects Completed" },
-    { value: "8+", label: "Technologies Mastered" },
-    { value: "BCA", label: "Student Status" },
-    { value: "100%", label: "Passion & Drive" }
+    { value: "4", label: "Total Projects" },
+    { value: "2", label: "Completed Projects" },
+    { value: "2", label: "On The Way 🚀" },
+    { value: "BCA", label: "3rd Sem (M.A.B. College)" }
   ],
   skills: {
     frontend: [
@@ -28,11 +28,12 @@ export const portfolioData = {
     programming: [
       { name: "C Language", level: 75 },
       { name: "C++", level: 80 },
-      { name: "JavaScript", level: 85 }
+      { name: "JavaScript", level: 85 },
+      { name: "Python", level: 70 }
     ],
     database: [
-      { name: "SQL", level: 80 },
-      { name: "PL/SQL", level: 75 }
+      { name: "SQL", level: 60 },
+      { name: "MongoDB", level: 80 }
     ],
     tools: [
       { name: "Git", level: 85 },

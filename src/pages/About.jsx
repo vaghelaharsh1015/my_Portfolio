@@ -164,18 +164,16 @@ export default function About() {
 
             <ScrollReveal animation="fade-up" delay={400} duration={800} className="about-paragraphs">
               <p>
-                Currently pursuing my **Bachelor of Computer Applications (BCA)** at V.S. Patel College (VNSGU), 
+                Currently pursuing my <strong>Bachelor of Computer Applications (BCA)</strong> at M.A.B. College (3rd Semester), 
                 I focus on translating logic into engaging digital products. I bridge the gap between back-end databases 
                 and front-end aesthetics to build solid, accessible systems.
               </p>
               <p>
-                My frontend technology stack revolves around **React.js and JavaScript (ES6+)**. I love playing with 
-                advanced CSS animations, custom canvas designs, and responsive layouts to craft a premium user feel.
+                I have worked on <strong>4 total projects</strong> — 2 completed e-commerce & frontend web apps, and 2 exciting projects currently <strong>On The Way 🚀</strong> (including Node.js backend & PHP Laravel systems).
               </p>
               <p>
-                As a developer, my strengths lie in fast self-learning, clean coding, and a solid problem-solving mindset 
-                nurtured by writing low-level systems in C/C++. My ultimate career goal is to join an engineering 
-                powerhouse where I can ship high-end web experiences.
+                My frontend technology stack revolves around <strong>React.js, JavaScript, Node.js, and MongoDB</strong>. I love playing with 
+                modern CSS animations, clean UI/UX, and responsive layouts to craft a premium user feel.
               </p>
             </ScrollReveal>
 
@@ -189,7 +187,7 @@ export default function About() {
                   duration={600}
                 >
                   <div className="stat-card glass-card">
-                    <div className="stat-number gradient-text-purple">
+                    <div className="stat-number">
                       <AnimatedCounter value={stat.value} />
                     </div>
                     <div className="stat-label">{stat.label}</div>

@@ -99,9 +99,13 @@
   box-shadow: var(--glass-shadow);
 }
 
+.form-card-header {
+  margin-bottom: 25px;
+}
+
 .form-title {
   font-size: 1.45rem;
-  margin-bottom: 25px;
+  margin-bottom: 8px;
   font-family: var(--font-heading);
   position: relative;
   display: inline-block;
@@ -111,11 +115,84 @@
 .form-title::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -4px;
   left: 0;
   width: 30px;
   height: 2px;
   background: var(--gradient-primary);
+}
+
+.form-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.contact-link-card {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-link-card:hover {
+  text-decoration: none;
+}
+
+/* WhatsApp Card Highlight */
+.whatsapp-card:hover {
+  border-color: rgba(37, 211, 102, 0.4);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.08);
+}
+
+.whatsapp-icon {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.25);
+  color: #25D366;
+}
+
+.contact-detail-card:hover .whatsapp-icon {
+  background: #25D366;
+  border-color: #25D366;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Form Actions Group */
+.form-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.form-actions-group .form-submit-btn {
+  margin-top: 0;
+  flex: 1;
+}
+
+.form-whatsapp-btn {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: var(--border-radius-sm);
+  padding: 14px 24px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.form-whatsapp-btn:hover {
+  background: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
 }
 
 .contact-form {

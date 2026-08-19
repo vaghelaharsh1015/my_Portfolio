@@ -167,30 +167,7 @@ a {
   background-clip: text;
 }
 
-/* Ultra-smooth Custom Cursor */
-.custom-cursor {
-  width: 6px;
-  height: 6px;
-  background: var(--text-primary);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background-color 0.2s;
-}
 
-.custom-cursor-follower {
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(111, 78, 55, 0.35);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
-}
 
 /* Background Grid & Ambient Glows */
 .bg-grid {

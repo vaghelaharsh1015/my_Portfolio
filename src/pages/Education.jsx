@@ -1,9 +1,9 @@
-import { portfolioData } from '../data/portfolioData';
+import { educationData } from '../data/education';
 import ScrollReveal from '../components/ScrollReveal';
 import '../styles/education.css';
 
 export default function Education() {
-  const { education } = portfolioData;
+  const education = educationData;
 
   return (
     <section id="education" className="section">

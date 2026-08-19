@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { FaTimes, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { portfolioData } from '../data/portfolioData';
+import { projectsData } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
 import ScrollReveal from '../components/ScrollReveal';
 import '../styles/projects.css';
 
 export default function Projects() {
-  const { projects } = portfolioData;
+  const projects = projectsData;
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['All', 'React', 'JavaScript', 'HTML & CSS'];
+  const categories = ['All', ...new Set(projects.map(p => p.category))];
 
   // Handle closing modal with Escape key
   useEffect(() => {
