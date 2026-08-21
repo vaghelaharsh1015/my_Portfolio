@@ -43,6 +43,7 @@ export default function ContactForm() {
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '1a20a569-2fec-45b4-a807-a26252bebe70';
       
       const formDataToSend = new FormData();
+      
       formDataToSend.append('access_key', accessKey);
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
