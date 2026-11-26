@@ -70,54 +70,20 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        {/* Logo */}
-        <div className="nav-logo" onClick={() => handleLinkClick('home')}>
-          <span className="logo-name">harsh</span><span className="logo-dot-dev">.dev</span>
-        </div>
+    <>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          {/* Logo */}
+          <div className="nav-logo" onClick={() => handleLinkClick('home')}>
+            <span className="logo-name">harsh</span><span className="logo-dot-dev">.dev</span>
+          </div>
 
-        {/* Desktop Links */}
-        <ul className="nav-links">
-          {navItems.map((item) => (
-            <li 
-              key={item.id} 
-              className={`nav-item ${activeItem === item.id ? 'active' : ''}`}
-            >
-              <a 
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(item.id);
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Toggle Button */}
-        <button 
-          className="mobile-toggle" 
-          onClick={toggleMenu} 
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
-
-        {/* Mobile Drawer Overlay */}
-        <div 
-          className={`mobile-nav-overlay ${isOpen ? 'open' : ''}`} 
-          onClick={toggleMenu}
-        />
-
-        {/* Mobile Drawer Menu */}
-        <div className={`mobile-nav-menu ${isOpen ? 'open' : ''}`}>
-          <ul className="mobile-nav-links">
+          {/* Desktop Links */}
+          <ul className="nav-links">
             {navItems.map((item) => (
               <li 
                 key={item.id} 
-                className={`mobile-nav-item ${activeItem === item.id ? 'active' : ''}`}
+                className={`nav-item ${activeItem === item.id ? 'active' : ''}`}
               >
                 <a 
                   onClick={(e) => {
@@ -130,8 +96,44 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Mobile Toggle Button */}
+          <button 
+            className="mobile-toggle" 
+            onClick={toggleMenu} 
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
+      </nav>
+
+      {/* Mobile Drawer Overlay — outside nav so it covers full screen */}
+      <div 
+        className={`mobile-nav-overlay ${isOpen ? 'open' : ''}`} 
+        onClick={toggleMenu}
+      />
+
+      {/* Mobile Drawer Menu — outside nav so it slides over full viewport */}
+      <div className={`mobile-nav-menu ${isOpen ? 'open' : ''}`}>
+        <ul className="mobile-nav-links">
+          {navItems.map((item) => (
+            <li 
+              key={item.id} 
+              className={`mobile-nav-item ${activeItem === item.id ? 'active' : ''}`}
+            >
+              <a 
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(item.id);
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
+    </>
   );
 }

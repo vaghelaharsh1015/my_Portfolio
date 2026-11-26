@@ -125,9 +125,9 @@
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 998;
+  background: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1001;
   opacity: 0;
   pointer-events: none;
   transition: var(--transition-smooth);
@@ -142,19 +142,18 @@
 .mobile-nav-menu {
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -320px;
   width: 280px;
   height: 100vh;
-  background: rgba(11, 15, 25, 0.98);
-  backdrop-filter: blur(20px);
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
-  z-index: 999;
+  background: #0d111c;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1002;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 40px;
-  transition: var(--transition-smooth);
-  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3);
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-nav-menu.open {
@@ -172,21 +171,24 @@
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 500;
-  color: #111111; /* Black — normal state */
+  color: #e0e0e0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 8px 0;
+  letter-spacing: 0.08em;
+  padding: 10px 0;
   display: block;
   transition: var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
 }
 
 .mobile-nav-item a:hover {
-  color: #ffffff; /* White on hover */
-  transform: translateX(6px);
+  color: #C8965A;
+  transform: translateX(8px);
+  border-bottom-color: rgba(200, 150, 90, 0.3);
 }
 
 .mobile-nav-item.active a {
-  color: #111111; /* Black bold on active */
+  color: #C8965A;
   font-weight: 700;
   transform: translateX(6px);
 }
